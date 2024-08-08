@@ -1,0 +1,20 @@
+services:
+  manymon:
+    build: .
+    ports:
+      - 127.0.0.1:4000:4000
+    environment:
+      DATABASE_URL: ecto://postgres:postgres@db/manymon
+      PROC_LOCATION: /procfs/
+    env_file: "secret.env"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /proc:/procfs:ro
+  db:
+    image: postgres
+    restart: on-failure
+    shm_size: 128mb
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: manymon
