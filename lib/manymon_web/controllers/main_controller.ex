@@ -5,7 +5,7 @@ defmodule ManymonWeb.MainController do
   alias Manymon.Tests
 
   def index(conn, _params) do
-    text(conn, "MANYMON Prometheus Exporter\nRequests expected at /metrics\n")
+    text(conn, "MANYMON Prometheus Exporter\nhttps://github.com/manymonindustries/manymon\nRequests expected at /metrics\n")
   end
 
   def metrics(conn, _params) do
